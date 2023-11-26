@@ -1,3 +1,7 @@
+import { TodoList } from "./components/todoList";
+
 export const App = () => {
-  return <div>Find me in App.jsx!</div>;
+  return <div>
+    <TodoList />
+  </div>;
 };
