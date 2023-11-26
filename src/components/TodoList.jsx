@@ -1,5 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux';
+// this import gives me an error --->
+// import { items } from '../reducers/todos'
 export const TodoList = () => {
     const { items } = useSelector((store) => store.todo.items);
     const dispatch = useDispatch();
