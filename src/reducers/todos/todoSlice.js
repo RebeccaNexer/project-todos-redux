@@ -1,29 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    items: [
-        { id: "1",
-          text: "Ägg",
-          taskCompleted: false,
-        },
-        { id: "2",
-          text: "Smör",
-          taskCompleted: false,
-        },
-        { id: "3",
-        text: "Mjölk",
-        taskCompleted: false,
-      },
-    ]
-}
-
 const todoSlice = createSlice({
-    name: "todo",
-    initialState,
+    name: "todos",
+    initialState: {
+      items: [
+          { id: "1",
+            text: "Ägg",
+            taskCompleted: false,
+          },
+          { id: "2",
+            text: "Smör",
+            taskCompleted: false,
+          },
+          { id: "3",
+          text: "Mjölk",
+          taskCompleted: false,
+        },
+      ]
+  },
     reducers: {
         addItem: (store, action) => {
-            store.items = [...store.items, action.payload]
-          },
+          store.items.push({
+            id: Date.now(),
+            text: action.payload,
+            taskCompleted: false,
+          });
+        },
         deleteItem: (store, action) => {
         store.items = store.items.filter((item) => item.id !== action.payload.id)
           },
@@ -43,6 +45,6 @@ const todoSlice = createSlice({
     },
 });
 
-export const { items } = todoSlice.actions;
+export const { items, addItem, deleteItem, completeTask, clearTodos } = todoSlice.actions;
 
 export default todoSlice.reducer;

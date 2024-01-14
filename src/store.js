@@ -2,9 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import todoReducer from "./reducers/todos/todoSlice";
 
 const reducer = combineReducers({
-    todo: todoReducer,
+    todos: todoReducer,
 });
 
-export const store = configureStore({
-    reducer: reducer
-})
+export const store = configureStore({ reducer });

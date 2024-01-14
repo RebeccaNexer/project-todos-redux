@@ -1,46 +1,42 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-// this import gives me an error --->
-// import { items } from '../reducers/todos'
+import { deleteItem, completeTask, clearTodos } from '../reducers/todos/todoSlice';
+import AddTodo from './AddTodo';
 export const TodoList = () => {
-    const { items } = useSelector((store) => store.todo.items);
+    const items = useSelector((store) => store.todos.items);
     const dispatch = useDispatch();
     console.log(items);
 
-    const dummyList = [
-        { id: "1",
-          text: "Städa",
-          taskCompleted: false,
-        },
-        { id: "2",
-          text: "Plugga",
-          taskCompleted: false,
-        },
-        { id: "3",
-        text: "Handla",
-        taskCompleted: false,
-      },
-    ]
+    // const dummyList = [
+    //     { id: "1",
+    //       text: "Städa",
+    //       taskCompleted: false,
+    //     },
+    //     { id: "2",
+    //       text: "Plugga",
+    //       taskCompleted: false,
+    //     },
+    //     { id: "3",
+    //     text: "Handla",
+    //     taskCompleted: false,
+    //   },
+    // ]
     return (
         <div className="container">
             <h1>TODO lista</h1>
-            {dummyList.map((item) => {
+            {items.map((item) => {
                 return <div className="divider" key={item.id}>
                 <h2>• {item.text}</h2>
-                <button>Fixat</button>
-                <button className="btn-red">Ta bort</button>
+                <button onClick={() => dispatch(completeTask(item.id))}>Fixat</button>
+                <button onClick={() => dispatch(deleteItem(item.id))} className='btn-red'>Ta bort</button>
+           
                 </div>
-                // <button onclick={() => dispatch(completeTask(item.id))}>Fixat</button>
-                // <button onclick={() => dispatch(deleteItem(item.id))}>Ta bort</button>
-         
-            })}
-            <div className="flex margin-top">
-            <button>Lägg till</button>
-            <button className="btn-red">Rensa</button>
-            
-            {/* <button onclick={() => dispatch(addItem(item.id))}>Lägg till</button>
-            <button onclick={() => dispatch(clearTodos(item.id))}>Rensa</button> */}
-            </div>
+                })}
+
+                <div className="flex margin-top">
+                <AddTodo />
+                <button onClick={() => dispatch(clearTodos(items.id))} className="btn-red">Rensa</button>
+                </div>
         </div>
     )
 }
