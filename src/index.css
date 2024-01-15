@@ -20,7 +20,7 @@ button {
   font-size: 18px;
   color: #FFFFFF;
   padding: 9px;
-  width: 100px;
+  width: auto;
   text-align: center;
   transition-duration: 0.4s;
   text-decoration: none;
@@ -64,4 +64,8 @@ button:active:after {
 border-bottom: 1px solid;
 border-color: lightgrey;
 padding-bottom: 27px;
+}
+
+input {
+  padding: 9px;
 }

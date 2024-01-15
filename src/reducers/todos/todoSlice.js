@@ -27,24 +27,24 @@ const todoSlice = createSlice({
           });
         },
         deleteItem: (store, action) => {
-        store.items = store.items.filter((item) => item.id !== action.payload.id)
-          },
-        completeTask: (store, action) => {
-            const { id } = action.payload;
-
-            store.items = store.items.map((item) => {
-                if (item.id === id) {
-                    return { ...item, completeTask: !item.completeTask}
-                }
-                return item
-            })
+          return store.items.filter((item) => item.id !== action.payload);
         },
+        // completeTask: (store, action) => {
+        //     const { id } = action.payload;
+
+        //     store.items = store.items.map((item) => {
+        //         if (item.id === id) {
+        //             return { ...item, completeTask: !item.completeTask}
+        //         }
+        //         return item
+        //     })
+        // },
         clearTodos: (store) => {
             store.items = []
         }
     },
 });
 
-export const { items, addItem, deleteItem, completeTask, clearTodos } = todoSlice.actions;
+export const { items, addItem, deleteItem, clearTodos } = todoSlice.actions;
 
 export default todoSlice.reducer;
