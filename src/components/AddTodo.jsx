@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from '../reducers/todos/todoSlice';
-
+import { tasks } from '../reducers/tasks';
 
 const AddTodo = () => {
   const [newItem, setNewItem] = useState("");
@@ -9,7 +8,7 @@ const AddTodo = () => {
 
   const handleAddItem = () => {
     if (newItem.trim() !== "") {
-      dispatch(addItem(newItem));
+      dispatch(tasks.actions.addItem(newItem));
       setNewItem("");
     }
   };
@@ -20,7 +19,7 @@ const AddTodo = () => {
         type="text"
         value={newItem}
         onChange={(e) => setNewItem(e.target.value)}
-        placeholder="Add item to list"
+        placeholder="Lägg till i inköpslistan"
       />
       <button onClick={handleAddItem}>Lägg till</button>
     </div>
