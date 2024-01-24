@@ -26,6 +26,8 @@ export const TodoList = () => {
                 </div>
                 ))}
 
+                <div className="margin-top">Inköpslistan innehåller {items.length} produkter</div>
+
                 <div className="flex margin-top">
                 <AddTodo />
                 <button onClick={() => dispatch(tasks.actions.clearTodos(items.id))} className="btn-red">Rensa lista</button>
